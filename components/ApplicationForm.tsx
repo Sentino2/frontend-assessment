@@ -11,6 +11,7 @@ import Step7Kontaktdaten from './steps/Step5Kontaktdaten'
 import Step3Kipper from './steps/Step3Kipper'
 import Step4ErfahrungOnly from './steps/Step4Erfahrung'
 import Step5Location from './steps/Step5Location'
+import Step3KipperErfahrungDesktop from './steps/Step3KipperErfahrungDesktop'
 import NavigationSidebar from './NavigationSidebar'
 
 export type FormData = {
@@ -46,12 +47,12 @@ const initialFormData: FormData = {
   hasCraneLicense: null,
   canOperateTipper: null,
   yearsOfExperience: '',
-  location: '78166, Donaueschingen',
+  location: 'Valencia, Spain',
   languages: ['Deutsch', 'Polnisch'],
-  firstName: 'Paul',
-  lastName: 'Neuer',
-  email: 'p.neuer@email.de',
-  phone: '012-3456789'
+  firstName: 'Santiago',
+  lastName: 'Garcia',
+  email: 'santiago.garcia@code.berlin',
+  phone: '739115976'
 }
 
 export default function ApplicationForm() {
@@ -127,7 +128,7 @@ export default function ApplicationForm() {
       } else if (currentStep === 2) {
         return <Step3Qualifikationen formData={formData} updateFormData={updateFormData} />
       } else if (currentStep === 3) {
-        return <Step4Erfahrung formData={formData} updateFormData={updateFormData} />
+        return <Step3KipperErfahrungDesktop formData={formData} updateFormData={updateFormData} />
       } else if (currentStep === 4) {
         return <Step5UeberDich formData={formData} updateFormData={updateFormData} />
       } else if (currentStep === 5) {
@@ -175,6 +176,9 @@ export default function ApplicationForm() {
           Dieses kurze Bewerbungsformular dauert weniger als eine Minute—kein Papierkram erforderlich. 
           Bewerben Sie sich jetzt und starten Sie Ihre Karriere als Fahrer!
         </p>
+        
+        {/* Separation Line - Desktop Only */}
+        <div className="hidden md:block border-b border-gray-200 mt-6 -mx-8"></div>
         
         {/* Progress Bar - Mobile Only */}
         <div className="md:hidden mt-4">

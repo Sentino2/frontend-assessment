@@ -77,7 +77,7 @@ export default function Step4UeberDich({ formData, updateFormData }: Step4UeberD
         </div>
         
         {/* Division Line after header */}
-        <div className="border-t border-gray-200 mb-4 -mx-4"></div>
+        <div className="hidden md:block border-b border-gray-200 pb-4 mb-4 -mx-4"></div>
         
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -111,7 +111,7 @@ export default function Step4UeberDich({ formData, updateFormData }: Step4UeberD
         </div>
         
         {/* Division Line after header */}
-        <div className="border-t border-gray-200 mb-4 -mx-4"></div>
+        <div className="hidden md:block border-b border-gray-200 pb-4 mb-4 -mx-4"></div>
         
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">

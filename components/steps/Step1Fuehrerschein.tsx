@@ -39,6 +39,9 @@ export default function Step1Fuehrerschein({ formData, updateFormData }: Step1Fu
           </h3>
         </div>
         
+        {/* Separation Line - Desktop Only */}
+        <div className="hidden md:block border-b border-gray-200 pb-4 mb-4 -mx-6"></div>
+        
         <div className="space-y-3 md:space-y-0 md:flex md:space-x-3">
           <label className="block w-full md:flex-1">
             <input
@@ -116,6 +119,9 @@ export default function Step1Fuehrerschein({ formData, updateFormData }: Step1Fu
             Welche Führerscheine besitzt du?
           </h3>
         </div>
+        
+        {/* Separation Line - Desktop Only */}
+        <div className="border-b border-gray-200 pb-4 mb-4 -mx-6"></div>
         
         <div className="grid grid-cols-3 gap-3">
           {['B', 'CE', 'C1E', 'C1', 'D', 'DE'].map((license) => (

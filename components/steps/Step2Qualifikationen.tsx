@@ -32,7 +32,10 @@ export default function Step2Qualifikationen({ formData, updateFormData }: Step2
           </h3>
         </div>
         
-        <div className="flex space-x-3">
+        {/* Separation Line - Desktop Only */}
+        <div className="hidden md:block border-b border-gray-200 pb-4 mb-4 -mx-6"></div>
+        
+        <div className="space-y-3 md:space-y-0 md:flex md:space-x-3">
           <label className="block flex-1">
             <input
               type="radio"

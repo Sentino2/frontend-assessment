@@ -50,8 +50,8 @@ export default function Step5Kontaktdaten({ formData, updateFormData, updateChec
           </h3>
         </div>
         
-        {/* Division Line after header - full width */}
-        <div className="border-t border-gray-200 mb-4 -mx-4"></div>
+        {/* Separation Line - Desktop Only */}
+        <div className="hidden md:block border-b border-gray-200 pb-4 mb-4 -mx-4"></div>
         
         <div className="space-y-8">
           {/* First Name and Last Name */}
