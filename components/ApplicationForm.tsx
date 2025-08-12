@@ -2,10 +2,15 @@
 
 import { useState } from 'react'
 import Step1Fuehrerschein from './steps/Step1Fuehrerschein'
-import Step2Qualifikationen from './steps/Step2Qualifikationen'
-import Step3Erfahrung from './steps/Step3Erfahrung'
-import Step4UeberDich from './steps/Step4UeberDich'
-import Step5Kontaktdaten from './steps/Step5Kontaktdaten'
+import Step2Licenses from './steps/Step2Licenses'
+import Step3Qualifikationen from './steps/Step2Qualifikationen'
+import Step4Erfahrung from './steps/Step3Erfahrung'
+import Step5UeberDich from './steps/Step4UeberDich'
+import Step6Languages from './steps/Step6Languages'
+import Step7Kontaktdaten from './steps/Step5Kontaktdaten'
+import Step3Kipper from './steps/Step3Kipper'
+import Step4ErfahrungOnly from './steps/Step4Erfahrung'
+import Step5Location from './steps/Step5Location'
 import NavigationSidebar from './NavigationSidebar'
 
 export type FormData = {
@@ -13,18 +18,22 @@ export type FormData = {
   hasClassCLicense: boolean | null
   licenses: string[]
   
-  // Step 2: Qualifikationen
+  // Step 2: Kranschein
   hasCraneLicense: boolean | null
   
-  // Step 3: Erfahrung
+  // Step 3: Kipper
   canOperateTipper: boolean | null
+  
+  // Step 4: Erfahrung
   yearsOfExperience: string
   
-  // Step 4: Über Dich
+  // Step 5: Location
   location: string
+  
+  // Step 6: Languages
   languages: string[]
   
-  // Step 5: Kontaktdaten
+  // Step 7: Kontaktdaten
   firstName: string
   lastName: string
   email: string
@@ -57,7 +66,10 @@ export default function ApplicationForm() {
   }
 
   const nextStep = () => {
-    if (currentStep < 5) {
+    // Desktop: 5 steps max
+    // Mobile: 7 steps max
+    const maxSteps = typeof window !== 'undefined' && window.innerWidth >= 768 ? 5 : 7
+    if (currentStep < maxSteps) {
       setCurrentStep(currentStep + 1)
     }
   }
@@ -106,17 +118,39 @@ export default function ApplicationForm() {
   }
 
   const renderCurrentStep = () => {
+    // Desktop: Show 5 steps in correct order
+    // Mobile: Show 7 steps
+    if (typeof window !== 'undefined' && window.innerWidth >= 768) {
+      // Desktop logic - 5 steps
+      if (currentStep === 1) {
+        return <Step1Fuehrerschein formData={formData} updateFormData={updateFormData} />
+      } else if (currentStep === 2) {
+        return <Step3Qualifikationen formData={formData} updateFormData={updateFormData} />
+      } else if (currentStep === 3) {
+        return <Step4Erfahrung formData={formData} updateFormData={updateFormData} />
+      } else if (currentStep === 4) {
+        return <Step5UeberDich formData={formData} updateFormData={updateFormData} />
+      } else if (currentStep === 5) {
+        return <Step7Kontaktdaten formData={formData} updateFormData={updateFormData} updateCheckboxes={updateCheckboxes} />
+      }
+    }
+    
+    // Mobile: Show 7 steps
     switch (currentStep) {
       case 1:
         return <Step1Fuehrerschein formData={formData} updateFormData={updateFormData} />
       case 2:
-        return <Step2Qualifikationen formData={formData} updateFormData={updateFormData} />
+        return <Step3Qualifikationen formData={formData} updateFormData={updateFormData} />
       case 3:
-        return <Step3Erfahrung formData={formData} updateFormData={updateFormData} />
+        return <Step3Kipper formData={formData} updateFormData={updateFormData} />
       case 4:
-        return <Step4UeberDich formData={formData} updateFormData={updateFormData} />
+        return <Step4ErfahrungOnly formData={formData} updateFormData={updateFormData} />
       case 5:
-        return <Step5Kontaktdaten formData={formData} updateFormData={updateFormData} updateCheckboxes={updateCheckboxes} />
+        return <Step5Location formData={formData} updateFormData={updateFormData} />
+      case 6:
+        return <Step6Languages formData={formData} updateFormData={updateFormData} />
+      case 7:
+        return <Step7Kontaktdaten formData={formData} updateFormData={updateFormData} updateCheckboxes={updateCheckboxes} />
       default:
         return <Step1Fuehrerschein formData={formData} updateFormData={updateFormData} />
     }
@@ -141,6 +175,19 @@ export default function ApplicationForm() {
           Dieses kurze Bewerbungsformular dauert weniger als eine Minute—kein Papierkram erforderlich. 
           Bewerben Sie sich jetzt und starten Sie Ihre Karriere als Fahrer!
         </p>
+        
+        {/* Progress Bar - Mobile Only */}
+        <div className="md:hidden mt-4">
+          <div className="w-full bg-gray-200 rounded-full h-2">
+            <div 
+              className="bg-orange h-2 rounded-full transition-all duration-300"
+              style={{ width: `${(currentStep / 7) * 100}%` }}
+            ></div>
+          </div>
+          <div className="text-right text-gray-500 text-sm mt-1">
+            {currentStep}/7
+          </div>
+        </div>
       </div>
 
       <div className="md:flex">
@@ -188,7 +235,7 @@ export default function ApplicationForm() {
 
           {/* Mobile */}
           <div className="md:hidden mt-6">
-            {currentStep === 5 ? (
+            {currentStep === 7 ? (
               <button
                 onClick={handleSubmitApplication}
                 disabled={!isSubmitEnabled}

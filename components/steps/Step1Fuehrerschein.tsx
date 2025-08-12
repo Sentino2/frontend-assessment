@@ -39,8 +39,8 @@ export default function Step1Fuehrerschein({ formData, updateFormData }: Step1Fu
           </h3>
         </div>
         
-        <div className="space-y-3">
-          <label className="block w-full">
+        <div className="space-y-3 md:space-y-0 md:flex md:space-x-3">
+          <label className="block w-full md:flex-1">
             <input
               type="radio"
               name="classCLicense"
@@ -69,7 +69,7 @@ export default function Step1Fuehrerschein({ formData, updateFormData }: Step1Fu
             </div>
           </label>
           
-          <label className="block w-full">
+          <label className="block w-full md:flex-1">
             <input
               type="radio"
               name="classCLicense"
@@ -100,8 +100,8 @@ export default function Step1Fuehrerschein({ formData, updateFormData }: Step1Fu
         </div>
       </div>
 
-      {/* Question 2: License Types */}
-      <div className="bg-white rounded-lg border border-gray-200 p-6">
+      {/* Question 2: License Types - Desktop Only */}
+      <div className="hidden md:block bg-white rounded-lg border border-gray-200 p-6">
         <div className="flex items-start space-x-3 mb-4">
           <div className="w-8 h-8 bg-white border border-gray-200 rounded flex items-center justify-center flex-shrink-0">
             <Image

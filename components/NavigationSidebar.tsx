@@ -7,6 +7,8 @@ interface NavigationSidebarProps {
 }
 
 export default function NavigationSidebar({ currentStep }: NavigationSidebarProps) {
+  // Desktop: Show original 5-step titles
+  // Mobile: Show 7-step titles
   const steps = [
     { id: 1, title: 'Führerschein', completed: currentStep > 1 },
     { id: 2, title: 'Qualifikationen', completed: currentStep > 2 },
@@ -37,6 +39,10 @@ export default function NavigationSidebar({ currentStep }: NavigationSidebarProp
                 height={20}
                 className="w-5 h-5"
               />
+            </div>
+          ) : step.id === currentStep ? (
+            <div className="w-5 h-5 border-2 border-gray-400 rounded-full flex items-center justify-center">
+              <div className="w-2.5 h-2.5 bg-gray-400 rounded-full"></div>
             </div>
           ) : (
             <div className="w-5 h-5 border-2 border-gray-300 rounded-full"></div>
