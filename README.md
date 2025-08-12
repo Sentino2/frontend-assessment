@@ -1,6 +1,6 @@
 # Frontend Assessment - Multi-Step Application Form
 
-A React Next.js TypeScript application that replicates the exact design from the provided screenshots. This is a multi-step application form for driver job applications with a modern, responsive UI.
+A React Next.js TypeScript application trying to replicate the frontend Coding task. This is a multi-step application form for driver job applications with a modern, responsive UI.
 
 ## Features
 
@@ -29,7 +29,7 @@ A React Next.js TypeScript application that replicates the exact design from the
 - **Framework:** Next.js 14 with App Router
 - **Language:** TypeScript
 - **Styling:** Tailwind CSS
-- **Font:** Inter (Google Fonts)
+- **Font:** Metropolis
 - **State Management:** React useState hooks
 
 ## Getting Started
